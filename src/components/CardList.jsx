@@ -20,9 +20,9 @@ const CardList = ({
 	const movieYear = new Date(release_date).getFullYear();
 
 	return (
-		<div className="text-gray-900 font-dmSans">
+		<div className="text-gray-900 cursor-pointer font-dmSans">
 			<div className="relative flex flex-col items-center w-full">
-				<div>
+				<div className="hover:opacity-90 hover:transition-all">
 					<img
 						src={poster ? `${img_300}/${poster}` : unavailable}
 						alt={name ? name : title}
@@ -60,12 +60,12 @@ const CardList = ({
 					{/* <span> {vote_count}</span> */}
 					<span>🍅 95%</span>
 				</div>
-				<p>
+				<small className="text-[12px] text-gray-400 font-bold">
 					{getGenreNames(
 						genre_ids,
 						media_type === "tv" ? tvGenres : movieGenres
 					)}
-				</p>
+				</small>
 			</div>
 		</div>
 	);
