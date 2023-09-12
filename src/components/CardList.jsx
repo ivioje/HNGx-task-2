@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart } from "react-icons/fa";
 import { img_300, unavailable } from "../App";
 import imdbLogo from "../assets/imdb.png";
+import { tvGenres, movieGenres } from "../constants/genre";
 
 const CardList = ({
 	id,
@@ -14,11 +15,12 @@ const CardList = ({
 	vote_count,
 	vote_average,
 	genre_ids,
+	getGenreNames,
 }) => {
 	const movieYear = new Date(release_date).getFullYear();
 
 	return (
-		<div className="text-gray-900">
+		<div className="text-gray-900 font-dmSans">
 			<div className="relative flex flex-col items-center w-full">
 				<div>
 					<img
@@ -44,16 +46,26 @@ const CardList = ({
 
 				<div className="flex items-center justify-between text-[12px]">
 					<div className="flex items-center">
-						<img
-							src={imdbLogo}
-							alt="imdb"
-							className="w-[35px] h-[17px]"
-						/>
-						<span className="px-2">{vote_average}/10</span>
+						<div>
+							<img
+								src={imdbLogo}
+								alt="imdb"
+								className="w-[35px] h-[17px]"
+							/>
+						</div>
+						<span className="px-2">
+							{Math.round(vote_average * 10) / 10}/10
+						</span>
 					</div>
-					<span>🍅 {vote_count}</span>
+					{/* <span> {vote_count}</span> */}
+					<span>🍅 95%</span>
 				</div>
-				<p>{genre_ids}</p>
+				<p>
+					{getGenreNames(
+						genre_ids,
+						media_type === "tv" ? tvGenres : movieGenres
+					)}
+				</p>
 			</div>
 		</div>
 	);
