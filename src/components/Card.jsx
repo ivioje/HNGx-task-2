@@ -24,7 +24,7 @@ const Card = ({ data }) => {
 			</div>
 
 			<div className="flex flex-wrap items-center justify-center w-full md:items-start">
-				{data.slice(0, 10).map((items) => (
+				{data?.slice(0, 10).map((items) => (
 					<div
 						key={items.id}
 						className="ex:w-[25%] md:w-[33.3%] sm:w-[50%] w-auto xs:p-8 p-6 min-w-[250px]"
