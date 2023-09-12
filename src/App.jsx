@@ -13,7 +13,7 @@ const App = () => {
 
 	const fetchMovies = async () => {
 		const movieData = await fetch(
-			`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+			`${BASE_URL}/trending/all/day?api_key=${API_KEY}`
 		);
 		const resData = await movieData.json();
 		setData(resData.results);
