@@ -11,7 +11,7 @@ import {
 
 export const Sidebar = () => {
 	return (
-		<div className="flex flex-col items-center justify-between p-5 w-[226px] text-gray-600 bar border-r-[1px] border-gray-300 rounded-[0px_45px_45px_0px]">
+		<div className="flex flex-col items-center justify-between p-5 text-gray-600 bar border-r-[1px] border-gray-300 rounded-[0px_45px_45px_0px]">
 			<div className="h-full full">
 				<img
 					src={logo}
@@ -30,7 +30,7 @@ export const Sidebar = () => {
 					Home
 				</NavLink>
 				<NavLink
-					to="/"
+					to="/favorites"
 					className="flex items-center justify-center"
 				>
 					<span>
