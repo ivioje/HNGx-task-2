@@ -6,7 +6,7 @@ import imdbLogo from "../assets/imdb.png";
 const Hero = () => {
 	return (
 		<>
-			<div className="hero h-[100vh] w-full font-dmSans text-white sm:px-16 px-2">
+			<div className="hero sm:h-[100vh] h-full w-full font-dmSans text-white sm:px-16 px-2 pb-4">
 				<Navbar />
 
 				<div className="sm:w-[410px] p-1 sm:mt-20 my-20 xs:w-[80%] w-full sm:block flex items-center flex-col">
