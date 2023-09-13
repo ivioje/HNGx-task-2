@@ -24,20 +24,27 @@ const MovieDetails = () => {
 				`${BASE_URL}/movie/${movieId.id}?api_key=${API_KEY}`
 			);
 			const resData = await movieDetails.json();
+
+			// Convert the release_date to a UTC string
+			resData.release_date_utc = new Date(
+				Date.UTC(
+					resData.release_date.slice(0, 4),
+					parseInt(resData.release_date.slice(5, 7)) - 1,
+					resData.release_date.slice(8)
+				)
+			).toUTCString();
+
 			setMovieDetails(resData);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	console.log(movieDetails);
-
 	useEffect(() => {
 		if (movieId) {
 			fetchMovieDetails();
 		}
 	}, [id, movieId, BASE_URL, API_KEY]);
-	// Find the movie object with a matching ID
 
 	return (
 		<div className="flex items-start">
@@ -74,7 +81,7 @@ const MovieDetails = () => {
 									className="px-2"
 									data-testid="movie-release-date"
 								>
-									{movieDetails.release_date}
+									{movieDetails.release_date_utc}
 								</span>
 								<span className="text-[7px]">
 									<FaDotCircle />

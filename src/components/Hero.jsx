@@ -6,11 +6,11 @@ import imdbLogo from "../assets/imdb.png";
 const Hero = () => {
 	return (
 		<>
-			<div className="hero h-[100vh] w-full font-dmSans text-white px-16">
+			<div className="hero h-[100vh] w-full font-dmSans text-white sm:px-16 px-2">
 				<Navbar />
 
-				<div className="w-[410px] p-1 mt-20">
-					<h1 className="font-bold text-[48px] py-1">
+				<div className="sm:w-[410px] p-1 sm:mt-20 my-20 xs:w-[80%] w-full sm:block flex items-center flex-col">
+					<h1 className="font-bold sm:text-[48px] xs:text-[38px] ss:text-[30px] text-[25px] py-1">
 						John Wick 3: Parabellum
 					</h1>
 					<div className="flex items-center justify-start">
@@ -18,7 +18,7 @@ const Hero = () => {
 							<img
 								src={imdbLogo}
 								alt="imdb"
-								className="w-full h-full mx-2"
+								className="w-full h-full mr-2"
 							/>
 							<span>860/100</span>
 						</div>
@@ -26,12 +26,12 @@ const Hero = () => {
 							<span>🍅 97%</span>
 						</div>
 					</div>
-					<p className="font-medium leading-[18px] py-1">
+					<p className="font-medium leading-[18px] py-1 sm:w-auto w-[90%]">
 						John Wick is on the run after killing a member of the international
 						assassins' guild, and with a $14 million price tag on his head, he
 						is the target of hit men and women everywhere.
 					</p>
-					<button className="my-2 inline-flex items-center gap-[8px] px-[16px] py-[6px] relative bg-rose rounded-[6px] all-[unset] box-border">
+					<button className="my-2 inline-flex sm:items-center items-start gap-[8px] px-[16px] py-[6px] relative bg-rose rounded-[6px] all-[unset] box-border">
 						<div className="relative w-fit mt-[-1.00px] font-bold text-[14px] tracking-[0] leading-[24px] whitespace-nowrap">
 							WATCH TRAILER
 						</div>

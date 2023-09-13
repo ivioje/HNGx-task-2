@@ -33,7 +33,7 @@ const Card = ({ data }) => {
 
 	return (
 		<div className="xs:p-[3rem] p-[2px]">
-			<div className="flex items-center justify-between p-6 xs:p-8">
+			<div className="flex items-center justify-between p-4 my-2 xs:p-8">
 				<h1 className="xs:text-[36px] text-[22px] font-bold">Featured Movie</h1>
 				<button className="flex items-center text-rose">
 					See more
