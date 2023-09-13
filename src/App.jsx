@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Route,
+	Routes,
+	useParams,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import MovieDetails from "./components/MovieDetails";
 import Favourites from "./pages/Favourites";
@@ -12,11 +17,16 @@ const App = () => {
 	const BASE_URL = "https://api.themoviedb.org/3";
 
 	const fetchMovies = async () => {
-		const movieData = await fetch(
-			`${BASE_URL}/trending/all/day?api_key=${API_KEY}`
-		);
-		const resData = await movieData.json();
-		setData(resData.results);
+		try {
+			const movieData = await fetch(
+				`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+			);
+			const resData = await movieData.json();
+			setData(resData.results);
+			// console.log(resData.results);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	useEffect(() => {
@@ -34,7 +44,13 @@ const App = () => {
 					/>
 					<Route
 						path="/movie/:id"
-						element={<MovieDetails />}
+						element={
+							<MovieDetails
+								data={data}
+								API_KEY={API_KEY}
+								BASE_URL={BASE_URL}
+							/>
+						}
 					/>
 					<Route
 						path="/favorites"

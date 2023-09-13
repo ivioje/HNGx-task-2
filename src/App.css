@@ -10,3 +10,32 @@
 .search::placeholder {
 	color: white;
 }
+
+.card {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+	justify-items: center;
+}
+@media screen and (max-width: 1200px) {
+	.card {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+}
+
+.bar > * {
+	margin: 1.5rem 0;
+}
+
+.bar div a {
+	padding: 1.5rem 0rem;
+	width: 100%;
+}
+.bar div a:hover {
+	color: #be123c;
+	background: #be123c1a;
+	border-right: 2px solid #be123c;
+}
+.bar div a span {
+	margin-right: 10px;
+}
