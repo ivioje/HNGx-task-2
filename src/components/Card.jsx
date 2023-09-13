@@ -8,8 +8,8 @@ import { tvGenres, movieGenres } from "../constants/genre";
 import { Link } from "react-router-dom";
 import { AppContext } from "../context/GlobalContext";
 
-const Card = ({ data }) => {
-	const { favorites, addToFavorites, removeFromFavorites } =
+const Card = () => {
+	const { data, favorites, addToFavorites, removeFromFavorites } =
 		useContext(AppContext);
 
 	const getGenreNames = (genreIds, genresData) => {
