@@ -61,14 +61,14 @@ const MovieDetails = () => {
 			<div className="md:w-[90%] w-full mx-4 md:mt-8 mt-4 text-gray-800">
 				{movieDetails ? (
 					<div
-						key={movieDetails?.id}
+						key={movieDetails.id}
 						className="flex flex-col items-center justify-center"
 					>
 						<div
 							className="h-[449px] w-[90%] movie_container rounded-[40px] xs:ml-0 ml-2"
 							style={{
 								backgroundImage: `url(${originalWidth}/${
-									movieDetails?.poster_path || unavailable
+									movieDetails.poster_path || unavailable
 								})`,
 							}}
 						/>
@@ -78,7 +78,7 @@ const MovieDetails = () => {
 									className="px-2"
 									data-testid="movie-title"
 								>
-									{movieDetails?.title}
+									{movieDetails.title}
 								</h2>
 								<span className="text-[7px] sm:block hidden">
 									<FaDotCircle />
@@ -87,7 +87,7 @@ const MovieDetails = () => {
 									className="px-2"
 									data-testid="movie-release-date"
 								>
-									{new Date(movieDetails?.release_date).toUTCString()}
+									{new Date(movieDetails.release_date).toUTCString()}
 								</span>
 								<span className="text-[7px] sm:block hidden">
 									<FaDotCircle />
@@ -96,14 +96,14 @@ const MovieDetails = () => {
 									className="px-2"
 									data-testid="movie-runtime"
 								>
-									{movieDetails?.runtime} minutes
+									{movieDetails.runtime} minutes
 								</span>
 							</div>
 							<p
 								data-testid="movie-overview"
 								className="font-normal text-[#333333] md:text-[20px] text-[18px] tracking-[0] leading-[normal] py-5"
 							>
-								{movieDetails?.overview}
+								{movieDetails.overview}
 							</p>
 						</div>
 					</div>
