@@ -7,8 +7,10 @@ const Hero = () => {
 	return (
 		<>
 			<div className="hero sm:h-[100vh] h-full w-full font-dmSans text-white sm:px-16 px-2 pb-4">
+				{/*Navbar */}
 				<Navbar />
 
+				{/*Hero details */}
 				<div className="sm:w-[410px] p-1 sm:mt-20 my-20 xs:w-[80%] w-full sm:block flex items-center flex-col">
 					<h1 className="font-bold sm:text-[48px] xs:text-[38px] ss:text-[30px] text-[25px] py-1">
 						John Wick 3: Parabellum

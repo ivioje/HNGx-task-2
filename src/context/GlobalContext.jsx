@@ -16,6 +16,7 @@ function preserveRef(key, v) {
 }
 
 export const AppProvider = ({ children }) => {
+	//app states
 	const [data, setData] = useState([]);
 	const [favorites, setFavorites] = useState([]);
 	const [error, setError] = useState(null);
@@ -23,6 +24,7 @@ export const AppProvider = ({ children }) => {
 	const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 	const BASE_URL = "https://api.themoviedb.org/3";
 
+	//function to fetch movies list
 	const fetchMovies = async () => {
 		try {
 			const movieData = await fetch(
@@ -33,7 +35,6 @@ export const AppProvider = ({ children }) => {
 			}
 			const resData = await movieData.json();
 			setData(resData.results);
-			// console.log(resData.results);
 		} catch (error) {
 			setError(error.message);
 		}
@@ -47,6 +48,7 @@ export const AppProvider = ({ children }) => {
 		}
 	};
 
+	//function to remove a movie from favorites
 	const removeFromFavorites = (movieId) => {
 		const updatedFavorites = favorites.filter((fav) => fav.id !== movieId);
 		setFavorites(updatedFavorites);

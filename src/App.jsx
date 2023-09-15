@@ -29,10 +29,6 @@ const App = () => {
 							path="/movie/:id"
 							element={<MovieDetails />}
 						/>
-						{/* <Route
-						path="/favorites"
-						element={<Favourites />}
-					/> */}
 						<Route
 							path="*"
 							element={<Home />}
@@ -45,6 +41,7 @@ const App = () => {
 	);
 };
 
+// image URLs
 export const img_300 = "https://image.tmdb.org/t/p/w300";
 export const originalWidth = "https://image.tmdb.org/t/p/original";
 export const unavailable =
