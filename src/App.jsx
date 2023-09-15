@@ -19,10 +19,10 @@ const App = () => {
 						path="/movie/:id"
 						element={<MovieDetails />}
 					/>
-					<Route
+					{/* <Route
 						path="/favorites"
 						element={<Favourites />}
-					/>
+					/> */}
 					<Route
 						path="*"
 						element={<Home />}

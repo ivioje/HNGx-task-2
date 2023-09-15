@@ -20,37 +20,25 @@ export const Sidebar = () => {
 			</div>
 
 			<div className="flex flex-col justify-between font-semibold text-[20px] w-full">
-				<NavLink
-					to="/"
-					className="flex items-center justify-center"
-				>
+				<NavLink className="flex items-center justify-center">
 					<span>
 						<FaHome />
 					</span>
 					Home
 				</NavLink>
-				<NavLink
-					to="/favorites"
-					className="flex items-center justify-center"
-				>
+				<NavLink className="flex items-center justify-center">
 					<span>
 						<FaFilm />
 					</span>
 					Movies
 				</NavLink>
-				<NavLink
-					to="/"
-					className="flex items-center justify-center"
-				>
+				<NavLink className="flex items-center justify-center">
 					<span>
 						<FaTv />
 					</span>
 					TV Series
 				</NavLink>
-				<NavLink
-					to="/"
-					className="flex items-center justify-center"
-				>
+				<NavLink className="flex items-center justify-center">
 					<span>
 						<FaCalendar />
 					</span>

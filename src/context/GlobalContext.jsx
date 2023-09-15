@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 export const AppContext = preserveRef("c", createContext());
 
@@ -19,6 +18,7 @@ function preserveRef(key, v) {
 export const AppProvider = ({ children }) => {
 	const [data, setData] = useState([]);
 	const [favorites, setFavorites] = useState([]);
+	const [error, setError] = useState(null);
 
 	const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 	const BASE_URL = "https://api.themoviedb.org/3";
@@ -28,11 +28,14 @@ export const AppProvider = ({ children }) => {
 			const movieData = await fetch(
 				`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
 			);
+			if (!movieData.ok) {
+				throw new Error("Network response was not ok");
+			}
 			const resData = await movieData.json();
 			setData(resData.results);
 			// console.log(resData.results);
 		} catch (error) {
-			console.log(error);
+			setError(error.message);
 		}
 	};
 
@@ -60,6 +63,7 @@ export const AppProvider = ({ children }) => {
 				addToFavorites,
 				removeFromFavorites,
 				favorites,
+				error,
 			}}
 		>
 			{children}

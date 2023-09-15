@@ -10,6 +10,7 @@ import { AppContext } from "../context/GlobalContext";
 const MovieDetails = () => {
 	const [movieDetails, setMovieDetails] = useState(null);
 	const [open, setOpen] = useState(false);
+	const [error, setError] = useState(null);
 
 	const { data } = useContext(AppContext);
 
@@ -29,7 +30,7 @@ const MovieDetails = () => {
 
 			setMovieDetails(resData);
 		} catch (error) {
-			console.log(error);
+			setError(error.message);
 		}
 	};
 
@@ -58,59 +59,63 @@ const MovieDetails = () => {
 				<div className="w-4 h-[2px] m-1 bg-white" />
 			</div>
 
-			<div className="md:w-[90%] w-full mx-4 md:mt-8 mt-4 text-gray-800">
-				{movieDetails ? (
-					<div
-						key={movieDetails.id}
-						className="flex flex-col items-center justify-center"
-					>
+			{error ? (
+				<div>{error}</div>
+			) : (
+				<div className="md:w-[90%] w-full mx-4 md:mt-8 mt-4 text-gray-800">
+					{movieDetails ? (
 						<div
-							className="h-[449px] w-[90%] movie_container rounded-[40px] xs:ml-0 ml-2"
-							style={{
-								backgroundImage: `url(${originalWidth}/${
-									movieDetails.poster_path || unavailable
-								})`,
-							}}
-						/>
-						<div className="py-8 xs:px-14 px-3">
-							<div className="w-full sm:font-medium font-bold md:text-[23px] text-[20px] text-neutral-700 flex sm:items-center items-start sm:flex-row flex-col">
-								<h2
-									className="px-2"
-									data-testid="movie-title"
+							key={movieDetails.id}
+							className="flex flex-col items-center justify-center"
+						>
+							<div
+								className="h-[449px] w-[90%] movie_container rounded-[40px] xs:ml-0 ml-2"
+								style={{
+									backgroundImage: `url(${originalWidth}/${
+										movieDetails.poster_path || unavailable
+									})`,
+								}}
+							/>
+							<div className="py-8 xs:px-14 px-3">
+								<div className="w-full sm:font-medium font-bold md:text-[23px] text-[20px] text-neutral-700 flex sm:items-center items-start sm:flex-row flex-col">
+									<h2
+										className="px-2"
+										data-testid="movie-title"
+									>
+										{movieDetails.title}
+									</h2>
+									<span className="text-[7px] sm:block hidden">
+										<FaDotCircle />
+									</span>
+									<span
+										className="px-2"
+										data-testid="movie-release-date"
+									>
+										{new Date(movieDetails.release_date).toUTCString()}
+									</span>
+									<span className="text-[7px] sm:block hidden">
+										<FaDotCircle />
+									</span>
+									<span
+										className="px-2"
+										data-testid="movie-runtime"
+									>
+										{movieDetails.runtime} minutes
+									</span>
+								</div>
+								<p
+									data-testid="movie-overview"
+									className="font-normal text-[#333333] md:text-[20px] text-[18px] tracking-[0] leading-[normal] py-5"
 								>
-									{movieDetails.title}
-								</h2>
-								<span className="text-[7px] sm:block hidden">
-									<FaDotCircle />
-								</span>
-								<span
-									className="px-2"
-									data-testid="movie-release-date"
-								>
-									{new Date(movieDetails.release_date).toUTCString()}
-								</span>
-								<span className="text-[7px] sm:block hidden">
-									<FaDotCircle />
-								</span>
-								<span
-									className="px-2"
-									data-testid="movie-runtime"
-								>
-									{movieDetails.runtime} minutes
-								</span>
+									{movieDetails.overview}
+								</p>
 							</div>
-							<p
-								data-testid="movie-overview"
-								className="font-normal text-[#333333] md:text-[20px] text-[18px] tracking-[0] leading-[normal] py-5"
-							>
-								{movieDetails.overview}
-							</p>
 						</div>
-					</div>
-				) : (
-					<p>No movie found with ID {id}</p>
-				)}
-			</div>
+					) : (
+						<p>No movie with ID {id}</p>
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
