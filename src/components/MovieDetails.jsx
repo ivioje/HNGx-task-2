@@ -119,12 +119,12 @@ const MovieDetails = () => {
 										<FaDotCircle />
 									</span>
 									{/*movie runtime */}
-									<span
+									<p
 										className="px-2"
 										data-testid="movie-runtime"
 									>
-										{movieDetails.runtime}
-									</span>
+										<span>{movieDetails.runtime}</span> minutes
+									</p>
 								</div>
 								{/*movie overview */}
 								<p
