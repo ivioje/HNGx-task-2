@@ -11,7 +11,7 @@ const Hero = () => {
 				<Navbar />
 
 				{/*Hero details */}
-				<div className="flex flex-col items-center md:justify-normal justify-center">
+				<div className="flex flex-col items-center md:items-start md:justify-normal justify-center">
 					<div className="sm:w-[410px] p-1 sm:mt-20 my-20 xs:w-[80%] w-full sm:block flex items-center sm:justify-start justify-center flex-col">
 						<h1 className="font-bold sm:text-[48px] xs:text-[38px] ss:text-[30px] text-[25px] py-1">
 							John Wick 3: Parabellum
