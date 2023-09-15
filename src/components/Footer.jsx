@@ -19,7 +19,7 @@ const Footer = () => {
 				</span>
 			</div>
 
-			<div className="flex items-center justify-center w-full font-bold">
+			<div className="flex items-center justify-center sm:flex-row flex-col w-full font-bold">
 				<a className="p-2">Conditions of Use</a>
 				<a className="p-2">Privacy & Policy</a>
 				<a className="p-2">Press Room</a>

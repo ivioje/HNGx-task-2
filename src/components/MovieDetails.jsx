@@ -33,6 +33,11 @@ const MovieDetails = () => {
 			}
 			const resData = await movieDetails.json();
 
+			// Convert the release_date to milliseconds
+			if (resData.release_date) {
+				resData.release_date = Date.parse(resData.release_date);
+			}
+
 			setMovieDetails(resData);
 		} catch (error) {
 			setError(error.message);
@@ -99,7 +104,7 @@ const MovieDetails = () => {
 										className="px-2"
 										data-testid="movie-release-date"
 									>
-										{new Date(movieDetails.release_date).toUTCString()}
+										{movieDetails.release_date}
 									</span>
 									<span className="text-[7px] sm:block hidden">
 										<FaDotCircle />
@@ -108,7 +113,7 @@ const MovieDetails = () => {
 										className="px-2"
 										data-testid="movie-runtime"
 									>
-										{movieDetails.runtime} minutes
+										{movieDetails.runtime}
 									</span>
 								</div>
 								<p

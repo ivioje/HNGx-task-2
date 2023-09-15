@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer";
 import Card from "../components/Card";
 import { AppContext } from "../context/GlobalContext";
 
@@ -10,7 +9,6 @@ const Home = () => {
 		<>
 			<Hero />
 			<Card data={data} />
-			<Footer />
 		</>
 	);
 };

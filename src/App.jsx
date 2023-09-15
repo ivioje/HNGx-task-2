@@ -7,6 +7,7 @@ import MovieDetails from "./components/MovieDetails";
 import ErrorBoundary from "./components/ErrorBoundary";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import Footer from "./components/Footer";
 
 const App = () => {
 	return (
@@ -38,6 +39,7 @@ const App = () => {
 						/>
 					</Routes>
 				</Router>
+				<Footer />
 			</ErrorBoundary>
 		</>
 	);

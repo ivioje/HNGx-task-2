@@ -2,7 +2,7 @@ import { TailSpin } from "react-loader-spinner";
 
 const Loader = () => {
 	return (
-		<div className="flex items-center justify-center h-[80vh]">
+		<div className="flex items-center justify-center flex-col h-[80vh]">
 			<TailSpin
 				height="100"
 				width="100"
@@ -13,6 +13,9 @@ const Loader = () => {
 				wrapperClass=""
 				visible={true}
 			/>
+			<small className="text-[10px] text-red-700">
+				Confirm if the movie ID you entered exists.
+			</small>
 		</div>
 	);
 };
