@@ -1,34 +1,44 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import Home from "./pages/Home";
 import MovieDetails from "./components/MovieDetails";
-import Favourites from "./pages/Favourites";
+import ErrorBoundary from "./components/ErrorBoundary";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 const App = () => {
 	return (
 		<>
-			<Router>
-				<Routes>
-					<Route
-						path="/"
-						exact
-						element={<Home />}
-					/>
-					<Route
-						path="/movie/:id"
-						element={<MovieDetails />}
-					/>
-					{/* <Route
+			{/*Error boundary */}
+			<ErrorBoundary>
+				{/*Notifications */}
+				<ToastContainer />
+
+				{/*App routes */}
+				<Router>
+					<Routes>
+						<Route
+							path="/"
+							exact
+							element={<Home />}
+						/>
+						<Route
+							path="/movie/:id"
+							element={<MovieDetails />}
+						/>
+						{/* <Route
 						path="/favorites"
 						element={<Favourites />}
 					/> */}
-					<Route
-						path="*"
-						element={<Home />}
-					/>
-				</Routes>
-			</Router>
+						<Route
+							path="*"
+							element={<Home />}
+						/>
+					</Routes>
+				</Router>
+			</ErrorBoundary>
 		</>
 	);
 };

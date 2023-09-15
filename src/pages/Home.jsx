@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Hero from "../components/Hero";
-import CardList from "../components/CardList";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import { AppContext } from "../context/GlobalContext";

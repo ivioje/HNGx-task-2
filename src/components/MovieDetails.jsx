@@ -6,6 +6,8 @@ import { unavailable } from "../App";
 import { Sidebar } from "./Sidebar";
 import { FaDotCircle } from "react-icons/fa";
 import { AppContext } from "../context/GlobalContext";
+import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 const MovieDetails = () => {
 	const [movieDetails, setMovieDetails] = useState(null);
@@ -26,6 +28,9 @@ const MovieDetails = () => {
 			const movieDetails = await fetch(
 				`${BASE_URL}/movie/${movieId.id}?api_key=${API_KEY}`
 			);
+			if (!movieDetails.ok) {
+				toast.error("Network response was not ok");
+			}
 			const resData = await movieDetails.json();
 
 			setMovieDetails(resData);
@@ -60,7 +65,10 @@ const MovieDetails = () => {
 			</div>
 
 			{error ? (
-				<div>{error}</div>
+				<div className="text-red-700 font-bold text-xl h-[80vh] flex items-center justify-center w-full flex-col">
+					<p>{"Error: " + error}</p>
+					<small>Please, check your network and try again.</small>
+				</div>
 			) : (
 				<div className="md:w-[90%] w-full mx-4 md:mt-8 mt-4 text-gray-800">
 					{movieDetails ? (
@@ -69,7 +77,7 @@ const MovieDetails = () => {
 							className="flex flex-col items-center justify-center"
 						>
 							<div
-								className="h-[449px] w-[90%] movie_container rounded-[40px] xs:ml-0 ml-2"
+								className="h-[449px] w-[90%] movie_container rounded-[40px] xs:ml-0 ml-2 shadow-xl"
 								style={{
 									backgroundImage: `url(${originalWidth}/${
 										movieDetails.poster_path || unavailable
@@ -112,7 +120,7 @@ const MovieDetails = () => {
 							</div>
 						</div>
 					) : (
-						<p>No movie with ID {id}</p>
+						<Loader />
 					)}
 				</div>
 			)}

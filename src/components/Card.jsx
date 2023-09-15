@@ -1,23 +1,24 @@
 import React, { useContext } from "react";
-import CardList from "./CardList";
+import { Link } from "react-router-dom";
+
+import { AppContext } from "../context/GlobalContext";
+import Loader from "./Loader";
 import { FaChevronRight } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { img_300, unavailable } from "../App";
 import imdbLogo from "../assets/imdb.png";
 import { tvGenres, movieGenres } from "../constants/genre";
-import { Link } from "react-router-dom";
-import { AppContext } from "../context/GlobalContext";
 
 const Card = () => {
 	const { data, favorites, addToFavorites, removeFromFavorites, error } =
 		useContext(AppContext);
 
 	const getGenreNames = (genreIds, genresData) => {
-		const genreNames = genreIds.map((genreId) => {
-			const genre = genresData.find((item) => item.id === genreId);
-			return genre ? genre.name : "";
-		});
-		return genreNames.join(", ");
+		return genreIds
+			.map((genreId) => genresData.find((item) => item.id === genreId))
+			.filter((genre) => genre)
+			.map((genre) => genre.name)
+			.join(", ");
 	};
 
 	const handleAddToFavorites = (movieId) => {
@@ -34,7 +35,9 @@ const Card = () => {
 	return (
 		<div className="xs:p-[3rem] p-[2px]">
 			<div className="flex items-center justify-between p-4 my-2 xs:p-8">
-				<h1 className="xs:text-[36px] text-[22px] font-bold">Featured Movie</h1>
+				<h1 className="xs:text-[36px] text-[22px] font-bold">
+					Featured Movies
+				</h1>
 				<button className="flex items-center text-rose">
 					See more
 					<span className="pl-2">
@@ -44,19 +47,17 @@ const Card = () => {
 			</div>
 
 			{error ? (
-				<div>error</div>
+				<div className="mt-20 text-lg font-bold">Error: {error.message}</div>
 			) : (
 				<div className="card">
-					{data?.slice(0, 10).map((items) => (
-						<div
-							key={items.id}
-							className="ex:w-[25%] md:w-[33.3%] sm:w-[50%] w-auto lg:p-1 p-4 min-w-[250px]"
-						>
-							<div>
-								<div
-									data-testid="movie-card"
-									className="text-gray-900 font-dmSans"
-								>
+					{data ? (
+						data.slice(0, 10).map((items) => (
+							<div
+								key={items.id}
+								data-testid="movie-card"
+								className="ex:w-[25%] md:w-[33.3%] sm:w-[50%] w-auto lg:p-1 p-4 min-w-[250px]"
+							>
+								<div className="text-gray-900 font-dmSans">
 									<div className="relative flex flex-col items-center w-full">
 										<Link
 											to={`/movie/${items.id}`}
@@ -136,8 +137,10 @@ const Card = () => {
 									</div>
 								</div>
 							</div>
-						</div>
-					))}
+						))
+					) : (
+						<Loader />
+					)}
 				</div>
 			)}
 		</div>
