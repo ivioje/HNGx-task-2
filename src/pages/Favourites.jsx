@@ -4,6 +4,7 @@ import { img_300 } from "../App";
 
 const Favourites = () => {
 	const { favorites, removeFromFavorites } = useContext(AppContext);
+
 	return (
 		<>
 			<h1 className="text-center text-[40px] text-gray-700 font-bold my-10">
