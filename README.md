@@ -61,9 +61,6 @@ https://www.themoviedb.org/.
 
 This project is deployed using Vercel. You can access the live version of the app at https://hn-gx-task-2.vercel.app/.
 
-Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
 ## Acknowledgments
 
 Thanks to The Movie Database (TMDb) for providing the movie data API.
