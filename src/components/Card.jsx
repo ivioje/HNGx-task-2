@@ -36,9 +36,9 @@ const Card = () => {
 	};
 
 	return (
-		<div className="xs:p-[3rem] p-[2px]">
+		<div className="sm:p-[3rem] p-[4px]">
 			{/*header */}
-			<div className="flex items-center justify-between p-4 my-2 xs:p-8">
+			<div className="flex items-center justify-between p-[4px] my-2 sm:p-8">
 				<h1 className="xs:text-[36px] text-[22px] font-bold">
 					Featured Movies
 				</h1>
